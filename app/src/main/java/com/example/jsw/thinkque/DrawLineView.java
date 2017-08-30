@@ -23,18 +23,24 @@ public class DrawLineView extends View {
     private float beginY = 0;
     private float stopX = 100;
     private float stopY = 100;
+    private float moveX = 0;
+    private float moveY = 0;
     private float offset = 0;
+    private boolean state;
 
     public DrawLineView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public DrawLineView(Context context, float beginX, float beginY, float stopX, float stopY) {
+    public DrawLineView(Context context, float beginX, float beginY, float stopX, float stopY, float moveX, float moveY, boolean state) {
         super(context);
         this.beginX = beginX;
         this.beginY = beginY;
         this.stopX = stopX;
         this.stopY = stopY;
+        this.moveX = moveX;
+        this.moveY = moveY;
+        this.state = state;
     }
 
 
@@ -51,8 +57,14 @@ public class DrawLineView extends View {
         Path mPath = new Path();
         mPath.reset();
 
-        mPath.moveTo(beginX, beginY);
-        mPath.cubicTo(beginX + 100, beginY, beginX, stopY, stopX, stopY);
+        mPath.moveTo(moveX, moveY);
+
+        // 45.0 < x <= 135.0 && -135.0 <= nodeAngle < -45.0 인 경우ㅡ
+        if(state){
+            mPath.cubicTo(beginX, beginY, beginX, stopY, stopX, stopY);
+        } else {
+            mPath.cubicTo(beginX, beginY, stopX, beginY, stopX, stopY);
+        }
         canvas.drawPath(mPath, redPaint);
     }
 }

@@ -18,6 +18,7 @@
         </RelativeLayout>
     </com.example.jsw.thinkque.ZoomView>
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:visibility="invisible"
         android:id="@+id/multiple_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

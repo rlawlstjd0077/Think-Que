@@ -1,6 +1,10 @@
 package com.example.jsw.thinkque.data;
 
+        import android.graphics.drawable.Drawable;
         import android.widget.Button;
+        import android.widget.RelativeLayout;
+
+        import com.example.jsw.thinkque.DrawLineView;
 
         import java.util.ArrayList;
 
@@ -9,7 +13,7 @@ package com.example.jsw.thinkque.data;
  */
 
 public class Node {
-    public static Node root = new Node("Root", 1, null, 0, 0, 200, 200, ButtonShape.CIRCLE);
+    public static Node root = new Node("Root dsadasdasda", 1, null, 0, 0, 200, 200, ButtonShape.CIRCLE);
     public static ArrayList<Node> nodeList = new ArrayList<>();
 
     public enum ButtonShape {
@@ -48,6 +52,10 @@ public class Node {
     private ArrayList<Node> childrenList;
     private boolean selectedState;
     private ButtonShape buttonShape;
+    private int buttonColor;
+    private int buttonStroke;
+    private DrawLineView line;
+
 
     public Node(String text, int level, Node parent, float x, float y, int width, int height, ButtonShape buttonShape){
         this.text = text;
@@ -175,5 +183,29 @@ public class Node {
 
     public void setcY(float cY) {
         this.cY = cY;
+    }
+
+    public void setButtonColor(int buttonColor) {
+        this.buttonColor = buttonColor;
+    }
+
+    public int getButtonColor(){
+        return buttonColor;
+    }
+
+    public int getButtonStroke() {
+        return buttonStroke;
+    }
+
+    public void setButtonStroke(int buttonStroke) {
+        this.buttonStroke = buttonStroke;
+    }
+
+    public DrawLineView getLine() {
+        return line;
+    }
+
+    public void setLine(DrawLineView line) {
+        this.line = line;
     }
 }

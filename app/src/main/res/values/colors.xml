@@ -6,4 +6,52 @@
     <color name="white">#fafafa</color>
     <color name="white_pressed">#f1f1f1</color>
     <color name="half_black">#808080</color>
+
+    <color name="pink_background">#F8BBD0</color>
+    <color name="red_background">#EF9A9A</color>
+    <color name="purple_background">#CE93D8</color>
+    <color name="indigo_background">#9FA8DA</color>
+    <color name="blue_background">#90CAF9</color>
+    <color name="yellow_background">#FFF59D</color>
+    <color name="orange_background">#FFCC80</color>
+    <color name="brown_background">#BCAAA4</color>
+    <color name="green_background">#A5D6A7</color>
+    <color name="teal_background">#80CBC4</color>
+
+    <color name="pink_stroke">#FF4081</color>
+    <color name="red_stroke">#FF1744</color>
+    <color name="purple_stroke">#6A1B9A</color>
+    <color name="indigo_stroke">#283593</color>
+    <color name="blue_stroke">#2979FF</color>
+    <color name="yellow_stroke">#FFFF00</color>
+    <color name="orange_stroke">#FF6D00</color>
+    <color name="brown_stroke">#4E342E</color>
+    <color name="green_stroke">#689F38</color>
+    <color name="teal_stroke">#1DE9B6</color>
+
+    <array name="background_list">
+        <item>@color/pink_background</item>
+        <item>@color/red_background</item>
+        <item>@color/purple_background</item>
+        <item>@color/indigo_background</item>
+        <item>@color/blue_background</item>
+        <item>@color/yellow_background</item>
+        <item>@color/orange_background</item>
+        <item>@color/brown_background</item>
+        <item>@color/green_background</item>
+        <item>@color/teal_background</item>
+    </array>
+
+    <array name="stroke_list">
+        <item>@color/pink_stroke</item>
+        <item>@color/red_stroke</item>
+        <item>@color/purple_stroke</item>
+        <item>@color/indigo_stroke</item>
+        <item>@color/blue_stroke</item>
+        <item>@color/yellow_stroke</item>
+        <item>@color/orange_stroke</item>
+        <item>@color/brown_stroke</item>
+        <item>@color/green_stroke</item>
+        <item>@color/teal_stroke</item>
+    </array>
 </resources>
