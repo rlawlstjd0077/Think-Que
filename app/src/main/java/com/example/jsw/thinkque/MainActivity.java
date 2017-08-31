@@ -1,11 +1,10 @@
 package com.example.jsw.thinkque;
 
+import android.app.FragmentManager;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         ScaleAnimation animation = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
         animation.setInterpolator(new BounceInterpolator());
-        animation.setStartOffset(50);// 动画秒数。
+        animation.setStartOffset(50);
         animation.setFillAfter(true);
         animation.setDuration(700);
         button.startAnimation(animation);
@@ -295,7 +294,18 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener fabEditOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "dasdas", Toast.LENGTH_SHORT).show();
+            FragmentManager manager = getFragmentManager();
+            EditNodeFragment editNameDialog = new EditNodeFragment();
+            editNameDialog.show(manager, "fragment_edit_node");
+            editNameDialog.setOnSubmitButtonClickListener(new EditNodeFragment.SubmitButtonClickListener() {
+                @Override
+                public void onSubmitButtonClick(String content) {
+                    selectedNode.setText(content);
+                    selectedNode.getButton().setText(content);
+                }
+            });
         }
     };
+
+
 }

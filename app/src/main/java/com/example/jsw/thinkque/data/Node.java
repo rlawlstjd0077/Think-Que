@@ -13,7 +13,7 @@ package com.example.jsw.thinkque.data;
  */
 
 public class Node {
-    public static Node root = new Node("Root dsadasdasda", 1, null, 0, 0, 200, 200, ButtonShape.CIRCLE);
+    public static Node root = new Node("Root", 1, null, 0, 0, 200, 200, ButtonShape.CIRCLE);
     public static ArrayList<Node> nodeList = new ArrayList<>();
 
     public enum ButtonShape {

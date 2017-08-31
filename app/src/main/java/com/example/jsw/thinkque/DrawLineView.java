@@ -43,13 +43,12 @@ public class DrawLineView extends View {
         this.state = state;
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) { // 화면을 그려주는 작업
         super.onDraw(canvas);
         Paint redPaint = new Paint();
         redPaint.setAntiAlias(true);
-        redPaint.setColor(Color.WHITE);
+        redPaint.setColor(Color.BLACK);
         redPaint.setStrokeWidth(5.0f);
         redPaint.setStyle(Paint.Style.STROKE);
         redPaint.setTextSize(50);
@@ -59,7 +58,7 @@ public class DrawLineView extends View {
 
         mPath.moveTo(moveX, moveY);
 
-        // 45.0 < x <= 135.0 && -135.0 <= nodeAngle < -45.0 인 경우ㅡ
+        // 45.0 < x <= 135.0 && -135.0 <= nodeAngle < -45.0 인 경우
         if(state){
             mPath.cubicTo(beginX, beginY, beginX, stopY, stopX, stopY);
         } else {
