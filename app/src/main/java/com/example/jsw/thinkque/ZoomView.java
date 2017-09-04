@@ -26,7 +26,6 @@ public class ZoomView extends FrameLayout {
      * @author karooolek
      */
     public interface ZoomViewListener {
-
         void onZoomStarted(float zoom, float zoomx, float zoomy);
 
         void onZooming(float zoom, float zoomx, float zoomy);
@@ -41,6 +40,7 @@ public class ZoomView extends FrameLayout {
     float zoomX, zoomY;
     float smoothZoomX, smoothZoomY;
     private boolean scrolling; // NOPMD by karooolek on 29.06.11 11:45
+    private boolean dragging = true;
 
     // minimap variables
     private boolean showMinimap = false;
@@ -92,6 +92,14 @@ public class ZoomView extends FrameLayout {
         }
 
         this.maxZoom = maxZoom;
+    }
+
+    public boolean isDragging() {
+        return dragging;
+    }
+
+    public void setDragging(boolean dragging) {
+        this.dragging = dragging;
     }
 
     public void setMiniMapEnabled(final boolean showMiniMap) {
@@ -197,7 +205,6 @@ public class ZoomView extends FrameLayout {
     }
 
     private void processSingleTouchEvent(final MotionEvent ev) {
-
         final float x = ev.getX();
         final float y = ev.getY();
 
@@ -248,15 +255,17 @@ public class ZoomView extends FrameLayout {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                if (scrolling || (smoothZoom > 1.0f && l > 30.0f)) {
-                    if (!scrolling) {
-                        scrolling = true;
-                        ev.setAction(MotionEvent.ACTION_CANCEL);
-                        super.dispatchTouchEvent(ev);
+                if(dragging) {
+                    if (scrolling || (smoothZoom > 1.0f && l > 30.0f)) {
+                        if (!scrolling) {
+                            scrolling = true;
+                            ev.setAction(MotionEvent.ACTION_CANCEL);
+                            super.dispatchTouchEvent(ev);
+                        }
+                        smoothZoomX -= dx / zoom;
+                        smoothZoomY -= dy / zoom;
+                        return;
                     }
-                    smoothZoomX -= dx / zoom;
-                    smoothZoomY -= dy / zoom;
-                    return;
                 }
                 break;
 
@@ -266,7 +275,7 @@ public class ZoomView extends FrameLayout {
                 // tap
                 if (l < 30.0f) {
                     // check double tap
-                    if (System.currentTimeMillis() - lastTapTime < 500) {
+                    if (System.currentTimeMillis() - lastTapTime < 300) {
                         if (smoothZoom == 1.0f) {
                             smoothZoomTo(maxZoom, x, y);
                         } else {
@@ -440,4 +449,3 @@ public class ZoomView extends FrameLayout {
         // }
     }
 }
-

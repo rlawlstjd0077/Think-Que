@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 if(findNodeFromButton(button).getLevel() != 1) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_MOVE:
+                            zoomView.setDragging(false);
+                            zoomView.getZoomFocusX();
                             int topMargin = (int) (button.getY() - (button.getHeight() / 2 - event.getY()));
                             int leftMargin = (int) (button.getX() - (button.getWidth() / 2 - event.getX()));
                             node.setX(leftMargin);
